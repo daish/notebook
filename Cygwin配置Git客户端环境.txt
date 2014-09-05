@@ -1,0 +1,17 @@
+﻿用Cygwin配置Git环境
+1.根据自己机器的操作系统下在Cygwin.http://www.cygwin.com/
+2.一路默认安装.
+3.安装cygwin包管理器。(有了它，安装留下的临时文件可以删除了。)
+  $ wget http://apt-cyg.googlecode.com/svn/trunk/apt-cyg
+  $ mv apt-cyg /usr/local/bin
+4.用apt-cyg安装Git
+  $ apt-cyg install git
+5.生成公钥私钥对。
+  $ apt-cyg install git
+6.拷贝公钥,追加到github的SSH keys里。
+7.测试经过HTTPS连接SSH。
+  $ ssh -T -p 443 git@ssh.github.com
+  如果显示下面的内容表明你可以通过HTTPS采用SSH的连接。
+  Hi username! You've successfully authenticated, but GitHub does not provide shell access.
+8. 克隆版本库到本地。
+  $ git clone git@github.com:daish/notebook.git

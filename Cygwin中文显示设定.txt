@@ -1,0 +1,18 @@
+﻿Cygwin中文支持设定
+1.在用户目录(cd ~)里的.bash_profile文件末尾添加如下代码
+export LC_ALL=en_US.UTF-16
+export LC_CTYPE=en_US.UTF-16
+export LANG=en_US.UTF-16
+export XMODIFIERS=@im=Chinput3
+stty cs8 -istrip
+stty pass8
+export LESSCHARSET=latin1
+2.同样是~目录，去掉.inputrc文件中一下代码的注释（前面的#号）
+set meta-flag on
+set convert-meta off
+set input-meta on
+set output-meta on 
+3.还是~目录，.bashrc文件中添加代码
+alias ls='ls --color --show-control-chars'
+4.配置Git的环境变量core.quotepath=false
+  $ git config --global core.quotepath false
