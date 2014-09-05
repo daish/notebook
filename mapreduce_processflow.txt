@@ -1,0 +1,25 @@
+﻿ 0.20.0及之前的版本
+1.首先用户程序(JobClient)提交一个Job，Job的信息会发送到Job Tracker是Map-Reduce框架的的中心，
+  他需要与集群的机器定时通信(heartbeat)，需要管理那些程序应该跑在那些机器上。需要管理所有的Job失败，
+  重启等操作。
+2.TaskTracker是Map-Reduce集群中每台机器都有的部分，他们做的事情主要是监视自己所在机器的资源状况。
+3.TaskTracker同时监视当前机器的tasks运行状况。TaskTracker需要把这些信息通过heartbeat发给JobTracker，
+  JobTracker会搜集这些信息以给新提交的job分配运行在那些机器上。
+
+可以看得出原来的 map-reduce 架构是简单明了的，在最初推出的几年，也得到了众多的成功案例，获得业界广泛的支持和肯定，
+但随着分布式系统集群的规模和其工作负荷的增长，原框架的问题逐渐浮出水面，主要的问题集中如下：
+1.JobTracker 是 Map-reduce 的集中处理点，存在单点故障。
+2.JobTracker 完成了太多的任务，造成了过多的资源消耗，当 map-reduce job 非常多的时候，会造成很大的内存开销，潜在来说，
+  也增加了 JobTracker fail 的风险，这也是业界普遍总结出老 Hadoop 的 Map-Reduce 只能支持 4000 节点主机的上限。
+3.在 TaskTracker 端，以 map/reduce task 的数目作为资源的表示过于简单，没有考虑到 cpu/ 内存的占用情况，
+  如果两个大内存消耗的 task 被调度到了一块，很容易出现 OOM。
+4.源代码层面分析的时候，会发现代码非常的难读，常常因为一个 class 做了太多的事情，代码量达 3000 多行，
+  造成 class 的任务不清晰，增加 bug 修复和版本维护的难度。
+5.从操作的角度来看，现在的 Hadoop MapReduce 框架在有任何重要的或者不重要的变化 ( 例如 bug 修复，性能提升和特性化 )
+  时，都会强制进行系统级别的升级更新。更糟的是，它不管用户的喜好，强制让分布式集群系统的每一个用户端同时更新。
+  这些更新会让用户为了验证他们之前的应用程序是不是适用新的 Hadoop 版本而浪费大量时间。
+  
+新 Hadoop Yarn 框架原理及运作机制
+
+
+参考：http://www.ibm.com/developerworks/cn/opensource/os-cn-hadoop-yarn/
