@@ -1,0 +1,5 @@
+#Host github.com
+Host *
+  Hostname ssh.github.com
+  Port 443
+  ProxyCommand nc -x 172.16.131.7:7070 %h %p
