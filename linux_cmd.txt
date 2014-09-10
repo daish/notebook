@@ -35,3 +35,18 @@
 # chkconfig –list # 列出所有系统服务 
 # chkconfig –list | grep on # 列出所有启动的系统服务程序 
 # rpm -qa # 查看所有安装的软件包
+
+DEVICE=eth0
+HWADDR=14:FE:B5:E8:5E:21
+TYPE=Ethernet
+UUID=adc66745-dadb-46d8-9fb8-cbc5669fc4da
+ONBOOT=yes
+NM_CONTROLLED=yes
+BOOTPROTO=none
+IPADDR=172.16.130.190
+NETMASK=225.255.254.0
+GATEWAY=172.16.131.254
+DNS1=172.25.0.6
+DNS2=172.25.0.7
+IPV6INIT=no
+USERCTL=no
