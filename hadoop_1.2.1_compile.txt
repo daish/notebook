@@ -1,0 +1,6 @@
+1.先决条件
+  安装gcc,gcc-c++,libtool,automake,autoconf,ant,java
+2.网络环境设置（可以直接上网的不要设置）
+  ant的代理
+  export ANT_OPTS="-Dhttps.proxyHost=host -Dhttps.proxyPort=port -Dhttp.proxyHost=host -Dhttp.proxyPort=port"
+3.运行ant命令
