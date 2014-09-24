@@ -1,6 +1,11 @@
 1.先决条件
-  安装gcc,gcc-c++,libtool,automake,autoconf,ant,java
+  安装gcc,gcc-c++,libtool,automake,autoconf,ant,java,forrest
 2.网络环境设置（可以直接上网的不要设置）
   ant的代理
   export ANT_OPTS="-Dhttps.proxyHost=host -Dhttps.proxyPort=port -Dhttp.proxyHost=host -Dhttp.proxyPort=port"
+3.修改build文件
+  eclipse工程的build.properties里面追加
+  eclipse.home=/usr/local/eclipse
+  修改build.xml，<property name="forrest.home" value="/home/hadoop/apache-forrest-0.9"/>
 3.运行ant命令
+  ant clean package
